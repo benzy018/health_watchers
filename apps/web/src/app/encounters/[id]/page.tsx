@@ -46,9 +46,18 @@ export default function EncounterDetailPage({ params }: EncounterPageProps) {
           <p className="text-sm text-gray-500">Encounter record — {data.id}</p>
           <h1 className="text-3xl font-semibold text-gray-900">{data.patientName}</h1>
         </div>
-        <Button variant="outline" onClick={() => router.push('/encounters')}>
-          Back to encounters
-        </Button>
+        <div className="flex items-center gap-3">
+          <Button
+            variant="outline"
+            onClick={() => router.push(`/encounters/${params.id}/print`)}
+            aria-label="Open print preview for this encounter"
+          >
+            🖨 Print
+          </Button>
+          <Button variant="outline" onClick={() => router.push('/encounters')}>
+            Back to encounters
+          </Button>
+        </div>
       </div>
       <EncounterDetail encounter={data} onBack={() => router.push('/encounters')} />
     </main>
