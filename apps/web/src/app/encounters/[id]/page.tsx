@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { Toast, TableSkeleton, ErrorMessage, Button } from '@/components/ui';
 import { useEncounter } from '@/lib/queries/useEncounter';
 import EncounterDetail from '@/components/encounters/EncounterDetail';
@@ -46,9 +47,17 @@ export default function EncounterDetailPage({ params }: EncounterPageProps) {
           <p className="text-sm text-gray-500">Encounter record — {data.id}</p>
           <h1 className="text-3xl font-semibold text-gray-900">{data.patientName}</h1>
         </div>
-        <Button variant="outline" onClick={() => router.push('/encounters')}>
-          Back to encounters
-        </Button>
+        <div className="flex items-center gap-3">
+          <Link
+            href={`/encounters/${params.id}/print`}
+            className="inline-flex items-center gap-1.5 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 no-print"
+          >
+            🖨 Print / Save PDF
+          </Link>
+          <Button variant="outline" onClick={() => router.push('/encounters')}>
+            Back to encounters
+          </Button>
+        </div>
       </div>
       <EncounterDetail encounter={data} onBack={() => router.push('/encounters')} />
     </main>
