@@ -111,3 +111,48 @@
   padding-left: 0.75rem;
   color: #6b7280;
 }
+
+/* =========================================================
+   Print styles — hide navigation, sidebar, and interactive
+   elements when printing encounter notes or invoices.
+   Targets A4 paper (210mm × 297mm) as per ISO standard.
+   ========================================================= */
+@media print {
+  /* Sidebar, top bar, mobile nav, and PWA chrome */
+  aside,
+  nav,
+  header,
+  [data-sidebar],
+  [data-topbar],
+  .no-print {
+    display: none !important;
+  }
+
+  /* Remove scroll-container constraints from the layout shell */
+  body,
+  html {
+    overflow: visible !important;
+    height: auto !important;
+  }
+
+  /* Let the print root fill the page */
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+  }
+
+  /* A4 page dimensions & margins */
+  @page {
+    size: A4 portrait;
+    margin: 18mm 15mm 18mm 15mm;
+  }
+
+  /* Ensure backgrounds and colours are printed faithfully */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    box-shadow: none !important;
+  }
+}

@@ -141,6 +141,12 @@ export default function InvoicesClient() {
                   </td>
                   <td className="px-4 py-3 text-right">
                     <div className="flex items-center justify-end gap-2">
+                      <a
+                        href={`/invoices/${inv._id}/print`}
+                        className="text-xs text-primary-600 hover:underline"
+                      >
+                        🖨 Print
+                      </a>
                       <button
                         onClick={() => handlePreviewPDF(inv._id)}
                         className="text-xs text-primary-600 hover:underline"

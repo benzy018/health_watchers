@@ -62,10 +62,10 @@ export default function EncounterPrintPage() {
           /* Hide screen-only elements inside the print root */
           .no-print { display: none !important; }
 
-          /* Reset page */
+          /* A4 paper layout — ISO 216 standard */
           @page {
-            size: letter;
-            margin: 0.75in 0.75in 0.75in 0.75in;
+            size: A4 portrait;
+            margin: 18mm 15mm 18mm 15mm;
           }
 
           body {
