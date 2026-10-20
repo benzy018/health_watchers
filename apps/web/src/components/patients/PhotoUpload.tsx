@@ -62,8 +62,8 @@ export default function PhotoUpload({
     if (!file) return;
     setError(null);
 
-    if (file.size > 5 * 1024 * 1024) {
-      setError('Photo must be 5 MB or less.');
+    if (file.size > 2 * 1024 * 1024) {
+      setError('Photo must be 2 MB or less.');
       return;
     }
     if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type)) {
